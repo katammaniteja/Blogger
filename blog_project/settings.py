@@ -17,7 +17,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 STATIC_DIR=os.path.join(BASE_DIR,'static')
-MEDIA_DIR=os.path.join(BASE_DIR,'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -152,7 +151,7 @@ STATICFILES_DIRS=[STATIC_DIR]
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 # Media
-MEDIA_ROOT=MEDIA_DIR
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
 #Login url
@@ -168,8 +167,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SOCIAL_AUTH_FACEBOOK_KEY = '437485651202845'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '38242d8ed2b6627bf38ea167240e6af7'  # App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '443470540655646'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '8f465893e187c8d7b9edd7d8d601115b'  # App Secret
 
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '799159097180-ota9ig59vqdvhj80f7mi4u6u7ns9usqm.apps.googleusercontent.com'
