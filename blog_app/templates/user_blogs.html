@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% if user.post_author.all %}
+{% for blog in user.post_author.all %}
+<div class="blog animate__animated">
+    <div class="row">
+        <div class="col-md-0 col-lg-4 image-div">
+            <img src="/media/{{blog.blog_image}}" alt="" title="{{blog.blog_title}}" class="rounded" width="100%">
+        </div>
+        <div class=" col-md-12 col-lg-8">
+            <span class="heading">{{blog.blog_title}}</span>
+            <div class="content">
+                {% autoescape off %}
+                {{blog.blog_content }}
+                {% endautoescape %}
+            </div>
+            <div class="read-more"><a href="{% url 'blog_app:blog_details' slug=blog.slug %}">Read More</a></div>
+            <p class="btn_group">
+                <a href="{% url 'blog_app:edit_blog' pk=blog.pk %}" class="btn btn-info btn-sm">Edit</a>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Modal"">Delete</button>
+            </p>
+        </div>
+    </div>
+</div> 
+<!-- Modal -->
+<div class=" modal fade" id="Modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Are you sure want to delete?
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'blog_app:delete_blog' pk=blog.pk %}" class="btn btn-secondary">Yes</a>
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="no-content">
+    Currently you dont have any Blogs. Get start with Blogging.
+</div>
+{% endif %}
+{% endblock %}

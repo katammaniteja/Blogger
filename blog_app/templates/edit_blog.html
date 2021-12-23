@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<style>
+    .tox-statusbar {
+        display: none !important;
+    }
+
+    .form-container {
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+    }
+</style>
+{% if blogs.author == user %}
+<div class="form-container">
+    <h2>Edit Post</h2>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {{form.media}}
+        {{form|crispy}}
+        {% csrf_token %}
+        <button class="btn btn-info" type="submit">Submit</button>
+        <a href="{% url 'blog_app:my_blogs' %}"><button class="btn btn-secondary" type="button">Cancel</button></a>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<style>
+    .tox-statusbar {
+        display: none !important;
+    }
+
+    .form-container {
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+    }
+</style>
+<div class="form-container">
+    <h2>Create New Post</h2>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {{form.media}}
+        {{ form|crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Create Post</button>
+    </form>
+</div>
+{% endblock %}

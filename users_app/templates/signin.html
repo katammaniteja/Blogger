@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<style>
+  a:hover {
+    text-decoration: none;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    margin-top: 30px;
+  }
+</style>
+<div class="form-container">
+  <h3>Login with your social account</h3>
+  <div style="width: 80%; margin:1.5rem auto;">
+    <hr>
+    <a href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-danger btn-block"><i
+          class="fab fa-google"></i> Login With Google</button></a>
+    <hr>
+    <a href="{% url 'social:begin' 'facebook' %}"><button class="btn btn-primary btn-block"><i
+          class="fab fa-facebook"></i> Login With
+        Facebook</button></a>
+  </div>
+</div>
+{% endblock %}

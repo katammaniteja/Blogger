@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="jumbotron">
+    <h1 class="display-4">Blogger.</h1>
+    <p>
+        This is a blogging platform for all your blogging needs! <br>
+        Want to read some awesome blogs? We've got you covered! <br>
+        Want to write an awesome blog post? <br>
+        Rest assured, because we've got you covered once again! <br>
+    </p>
+    <hr class="my-4">
+    <p class="lead">
+    <p style="margin-bottom: 0.7rem;"> So, click below and dive right in! </p>
+    <a class="btn btn-secondary btn-lg" href="{% url 'blog_app:blog_list' %}" role="button">Show Blog Posts</a>
+    </p>
+</div>
+{% endblock %}

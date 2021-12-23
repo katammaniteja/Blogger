@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/blog_details.css' %}">
+
+<div class="row">
+    <div class="col col-12">
+        <h3 class="title">{{blog.blog_title}}</h3>
+        <h5>By {{blog.author}}</h5>
+
+    </div>
+    <div class="col col-12">
+        <div class="image">
+            <img src="/media/{{blog.blog_image}}" alt="" title="{{blog.blog_title}}" class="rounded" width="100%">
+        </div>
+        {% autoescape off %}
+        {{blog.blog_content}}
+        {% endautoescape %}
+    </div>
+    <div class="col-12">
+        <hr>
+    </div>
+    <div class="col-12">
+        {% if user.is_authenticated %}
+        <form method="post" id="cmtForm">
+            <div class="form-group">
+                <h3>Post a Comment</h3>
+                <textarea type="text" name="comment" required placeholder="Start typing your comment....."
+                    class="form-control" id=""></textarea>
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-danger cmt_submit">Post</button>
+                </div>
+            </div>
+        </form>
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="col-12">
+        <h3>Comments({{ blog.blog_comment.count }})</h3>
+        {% if blog.blog_comment.all %}
+        {% for comment in blog.blog_comment.all %}
+        <div>
+            <span class="cmt_user">{{comment.user}}</span><span class="cmt_date">{{comment.comment_date}}</span>
+            <br>
+            {{comment.comment}}
+        </div>
+        {% endfor %}
+        {% else %}
+        <strong>Be the first person to comment on this post:)</strong>
+        {% endif %}
+    </div>
+</div>
+<div class=" modal fade" id="Modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Are you sure want to delete?
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'blog_app:delete_blog' pk=blog.pk %}" class="btn btn-secondary">Yes</a>
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

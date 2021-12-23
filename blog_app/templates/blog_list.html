@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% for blog in blogs %}
+<div class="blog animate__animated ">
+    <div class="row">
+        <div class="col-lg-4 image-div">
+            <img src="/media/{{blog.blog_image}}" title="{{blog.blog_title}}" class="rounded" width="100%">
+        </div>
+        <div class="col-lg-8">
+            <span class="heading">{{blog.blog_title}}</span>
+            <div class="content">
+                {% autoescape off %}
+                {{blog.blog_content}}
+                {% endautoescape %}
+            </div>
+            <div class="read-more"><a href="{% url 'blog_app:blog_details' slug=blog.slug %}">Read More</a></div>
+            <span class="author">
+                <span class="fa fa-user"></span> by <span>{{blog.author}} </span> <span class="fa fa-calendar"></span>
+                <span class="date">{{blog.publish_date}} </span> <span class="fa fa-comment"></span>
+                <span> {{ blog.blog_comment.count }} comment(s)</span>
+            </span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %} 
