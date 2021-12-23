@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col col-12">
         <h3 class="title">{{blog.blog_title}}</h3>
-        <h5>By {{blog.author}}</h5>
+        <h5><strong>By {{blog.author}}</strong> </h5>
 
     </div>
     <div class="col col-12">
@@ -42,7 +42,7 @@
         {% if blog.blog_comment.all %}
         {% for comment in blog.blog_comment.all %}
         <div>
-            <span class="cmt_user">{{comment.user}}</span><span class="cmt_date">{{comment.comment_date}}</span>
+            <span class="cmt_user"><strong>{{comment.user}}</strong></span><span class="cmt_date">{{comment.comment_date}}</span>
             <br>
             {{comment.comment}}
         </div>
