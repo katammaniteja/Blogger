@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col col-12">
         <h3 class="title">{{blog.blog_title}}</h3>
-        <h5><strong>By {{blog.author}}</strong> </h5>
+        <h5>By {{blog.author}}</h5>
 
     </div>
     <div class="col col-12">
@@ -35,6 +35,17 @@
             </div>
         </form>
         {% else %}
+        <form method="post" id="cmtForm">
+            <div class="form-group">
+                <h3>Post a Comment</h3>
+                <textarea type="text" name="comment" required placeholder="Start typing your comment....."
+                    class="form-control" id="cmtPOP"></textarea>
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-danger cmt_submit" disabled>Post</button>
+                </div>
+            </div>
+        </form>
         {% endif %}
     </div>
     <div class="col-12">
@@ -42,7 +53,7 @@
         {% if blog.blog_comment.all %}
         {% for comment in blog.blog_comment.all %}
         <div>
-            <span class="cmt_user"><strong>{{comment.user}}</strong></span><span class="cmt_date">{{comment.comment_date}}</span>
+            <span class="cmt_user">{{comment.user}}</span><span class="cmt_date">{{comment.comment_date}}</span>
             <br>
             {{comment.comment}}
         </div>
@@ -52,17 +63,10 @@
         {% endif %}
     </div>
 </div>
-<div class=" modal fade" id="Modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                Are you sure want to delete?
-            </div>
-            <div class="modal-footer">
-                <a href="{% url 'blog_app:delete_blog' pk=blog.pk %}" class="btn btn-secondary">Yes</a>
-                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    document.getElementById("cmtPOP").addEventListener('focus', () => {
+        console.log("You clicked");
+        swal("OOPS!","Please login to comment", "error");
+    })
+</script>
 {% endblock %}
