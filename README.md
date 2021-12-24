@@ -62,9 +62,3 @@ $ python manage.py runserver
 - 🔃 Create a new pull request.
 
 ----
-
-
-
-#### If you like this project hit ⭐
-
-<p align="center">Thanks for reading 🙏🏽</p>
