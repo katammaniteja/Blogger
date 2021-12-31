@@ -23,6 +23,8 @@ window.addEventListener('scroll',()=>{
 
 
 document.getElementById("cmtPOP").addEventListener('focus', () => {
-    console.log("You clicked");
-    swal("OOPS!","Please login to comment", "error");
+    // console.log("You clicked");
+    // swal("OOPS!","Please login to comment", "error");
+    alertify.set('notifier','position','top-left');
+    alertify.warning("Please login to comment");
 })
