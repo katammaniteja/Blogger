@@ -20,3 +20,9 @@ window.addEventListener('scroll',()=>{
         }
     }
 })
+
+
+document.getElementById("cmtPOP").addEventListener('focus', () => {
+    console.log("You clicked");
+    swal("OOPS!","Please login to comment", "error");
+})
