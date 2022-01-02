@@ -1,6 +1,6 @@
 from django.forms import fields
 from django.shortcuts import render,HttpResponseRedirect
-from django.views.generic import CreateView,UpdateView,ListView,DetailView,TemplateView
+from django.views.generic import CreateView,UpdateView,ListView,DetailView,TemplateView,ListView
 from .models import Comment,Blog
 from django.urls import reverse,reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -21,9 +21,11 @@ class UpdateBlog(LoginRequiredMixin,UpdateView):
     def get_success_url(self,**kwargs):
         return reverse_lazy('blog_app:blog_details',kwargs={'slug':self.object.slug})
 
-def blog_list(request):
-    blog=Blog.objects.all();
-    return render(request,'blog_list.html',context={'blogs':blog});
+class blog_list(ListView):
+    model=Blog
+    context_object_name='blogs'
+    paginate_by=3
+    template_name="blog_list.html"
 
 class create_blog(LoginRequiredMixin,CreateView):
     model=Blog
