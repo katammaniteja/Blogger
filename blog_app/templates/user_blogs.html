@@ -19,7 +19,7 @@
             <div class="read-more"><a href="{% url 'blog_app:blog_details' slug=blog.slug %}">Read More</a></div>
             <p class="btn_group">
                 <a href="{% url 'blog_app:edit_blog' pk=blog.pk %}" class="btn btn-info btn-sm">Edit</a>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Modal">Delete</button>
+                <button type="button" class="btn btn-danger btn-sm dtlBlg" id="{{blog.pk}}" >Delete</button>
             </p>
         </div>
     </div>

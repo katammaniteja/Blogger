@@ -28,3 +28,10 @@ document.getElementById("cmtPOP").addEventListener('focus', () => {
         window.location.href='/account/signin/';
     })
 })
+
+dtlBlgs=document.getElementsByClassName("dltBlg");
+Array.from(dtlBlgs).forEach((element)=>{
+    element.addEventListener("click",(this)=>{
+        window.location.href=`/blog/delete-blog/${this.id}`;
+    })
+})
