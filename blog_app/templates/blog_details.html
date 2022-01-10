@@ -22,31 +22,17 @@
         <hr>
     </div>
     <div class="col-12">
-        {% if user.is_authenticated %}
         <form method="post" id="cmtForm">
             <div class="form-group">
                 <h3>Post a Comment</h3>
                 <textarea type="text" name="comment" required placeholder="Start typing your comment....."
-                    class="form-control" id=""></textarea>
+                    class="form-control" {% if not user.is_authenticated %} id="cmtPOP" {% endif %}></textarea>
                 {% csrf_token %}
                 <div>
-                    <button type="submit" class="btn btn-danger cmt_submit">Post</button>
+                    <button type="submit" class="btn btn-danger cmt_submit" {% if not user.is_authenticated %} disabled {% endif %}>Post</button>
                 </div>
             </div>
         </form>
-        {% else %}
-        <form method="post" id="cmtForm">
-            <div class="form-group">
-                <h3>Post a Comment</h3>
-                <textarea type="text" name="comment" required placeholder="Start typing your comment....."
-                    class="form-control" id="cmtPOP"></textarea>
-                {% csrf_token %}
-                <div>
-                    <button type="submit" class="btn btn-danger cmt_submit" disabled>Post</button>
-                </div>
-            </div>
-        </form>
-        {% endif %}
     </div>
     <div class="col-12">
         <h3>Comments({{ blog.blog_comment.count }})</h3>
@@ -63,5 +49,4 @@
         {% endif %}
     </div>
 </div>
-
 {% endblock %}
