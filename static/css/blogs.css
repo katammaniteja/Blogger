@@ -74,6 +74,22 @@ a:hover {
     font-size: 14px;
 }
 
+.pagination a{
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.pagination{
+    margin: auto;
+    border-radius: 10px;
+    height: 40px;
+    background-color: white;
+    width: 300px;display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 600;
+}
+
 /* User Blogs */
 .btn_group {
     margin-top: 5px;
