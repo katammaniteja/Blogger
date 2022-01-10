@@ -21,9 +21,10 @@ window.addEventListener('scroll',()=>{
     }
 })
 
-
 document.getElementById("cmtPOP").addEventListener('focus', () => {
     document.getElementById("cmtPOP").blur();
-    alertify.set('notifier','position','top-left');
-    alertify.warning("Please login to comment");
+    swal("Please login to comment")
+    .then(()=>{
+        window.location.href='/account/signin/';
+    })
 })
