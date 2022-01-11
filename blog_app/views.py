@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import re
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -49,7 +50,9 @@ def blog_details(request,slug):
             new_comment=Comment.objects.create(comment=comment,blog=blog,user=request.user)
             new_comment.save()
             return HttpResponseRedirect(reverse('blog_app:blog_details',kwargs={'slug':slug}))
-    return render(request,'blog_details.html',context={'blog':blog})
+        else:
+            messages.info(request,"You cannot comment on your blog")
+            return render(request,'blog_details.html',context={'blog':blog})
 
 @login_required
 def DeleteBlog(request,pk):
