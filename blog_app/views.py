@@ -52,7 +52,7 @@ def blog_details(request,slug):
             return HttpResponseRedirect(reverse('blog_app:blog_details',kwargs={'slug':slug}))
         else:
             messages.info(request,"You cannot comment on your blog")
-            return render(request,'blog_details.html',context={'blog':blog})
+    return render(request,'blog_details.html',context={'blog':blog})
 
 @login_required
 def DeleteBlog(request,pk):
