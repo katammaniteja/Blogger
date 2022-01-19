@@ -62,8 +62,6 @@ $ python manage.py runserver
 - 🔃 Create a new pull request.
 
 
-####step
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/N8oQi5JvR9E/0.jpg)](https://www.youtube.com/watch?v=N8oQi5JvR9E)
 
 
 ----
